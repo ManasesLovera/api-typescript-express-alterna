@@ -21,10 +21,10 @@ This will compile the typescript code to javascript and execute it, and everytim
 you don't need to recompile again.
 
 You can also use:
-    ```npm run build```
+    npm run build
 to compile to javascript
 
-And the:
+And then:
     ```npm start```
 to run the javascript code.
 
