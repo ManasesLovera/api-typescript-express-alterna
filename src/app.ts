@@ -98,6 +98,15 @@ app.put('/users', (req:Request, res:Response) => {
     // that the user wants us to update
     const {userName, newUserName} = req.body;
 
+    // Confirming that both have strings and are not null
+    if(!userName || !newUserName){
+        return res.status(400).json({
+            statusCode: 400,
+            statusValue: 'Bad Request',
+            Message: 'Missing information'
+        })
+    }
+
     // Confirming if the user is not inserting the same value
     if(userName === newUserName) {
         return res.status(400).json({
