@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>API</title>
+</head>
+<body>
+    <h1>API using typescript-express</h1>
+    <div class="container">
+        <label for="">Username:</label>
+        <input type="text" name="" id="username" placeholder="username">
+        <br><br>
+        <button onclick="addNewUser()">Agregar</button>
+        <button onclick="clean()">Limpiar</button>
+        <br><br>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Username</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                
+            </tbody>
+        </table>
+    </div>
+
+    <script type="text/javascript" src="main.js"></script>
+</body>
+</html>

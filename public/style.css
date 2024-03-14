@@ -1,0 +1,11 @@
+body {
+    margin: 20px 0 0 20px;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+td, th {
+    padding: 5px;
+}
+button {
+    cursor:pointer;
+}

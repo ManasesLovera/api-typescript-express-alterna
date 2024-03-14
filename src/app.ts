@@ -5,6 +5,8 @@ const port = 3000;
 //middleware
 app.use(express.json());
 
+app.use('/', express.static('public'))
+
 type User = {
     id: number,
     userName: string
@@ -88,7 +90,6 @@ app.post('/users', (req:Request, res:Response) => {
     users.push(newUser);
     // And finally this will return the user that was added to the list
     res.status(201).json(newUser);
-
 })
 
 // This method will update the user name of the list
@@ -96,6 +97,15 @@ app.put('/users', (req:Request, res:Response) => {
     // We will receive the user name we have on file according to the user, and the new user
     // that the user wants us to update
     const {userName, newUserName} = req.body;
+
+    // Confirming if the user is not inserting the same value
+    if(userName === newUserName) {
+        return res.status(400).json({
+            statusCode: 400,
+            statusValue: 'Bad Request: Invalid',
+            Message: 'This user has already this user name'
+        })
+    }
 
     // This will return the index of the user in the list if it exists
     const userIndex:number = users.findIndex( user => user.userName === userName)
@@ -115,12 +125,10 @@ app.put('/users', (req:Request, res:Response) => {
 
 })
 // Method delete a user
-app.delete('/users', (req:Request, res:Response) => {
-    // the user name that the user wants to delete
-    const {userName} = req.body;
+app.delete('/users/:id', (req:Request, res:Response) => {
 
     // This will return the index of the user in the list if it exists
-    const userIndex:number = users.findIndex( user => user.userName === userName)
+    const userIndex:number = users.findIndex(user => user.id === Number.parseInt(req.params.id))
 
     //If the user doesn't exist this will return a 404 response
     if (userIndex == -1) {
